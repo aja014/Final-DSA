@@ -1042,8 +1042,8 @@ w:
 				// youre at choosing the product - done
 			W1:
 				// Display - done
-				for (int i = 0; i < y; i++) {
-					coorxy(33, 6 + i); cout << ' ';
+				for (int i = 1; i <= 10; i++) {
+					coorxy(33, 5 + i); cout << ' ';
 				}
 				for (int i = 0; i < y; i++) {
 					if (lcntr == i) {
@@ -1074,7 +1074,7 @@ w:
 						if (lcntr == y - 1) lcntr = 0;
 						else lcntr++;
 						break;
-					case 77: //right - todo here again
+					case 77: //right key buy product - todo here again
 						if (maxdis >= tempVector.size() || tempVector.size() <= 10) {
 							/*if (maxdis > tempVector.size()) {*/
 							maxdis = 9;
@@ -1119,8 +1119,9 @@ w:
 							coorxy(35, 6 + i); cout << string(56, ' ');
 						}*/
 						for (int i = 0; i <= y; i++) {
-							coorxy(35, 6 + i); cout << string(56, ' ');
+							coorxy(34, 6 + i); cout << string(57, ' ');
 						}
+						lcntr = 0;
 						goto productList;
 						break;
 					case 75: //left
@@ -1142,8 +1143,9 @@ w:
 							
 						}
 						for (int i = 0; i <= y; i++) {
-							coorxy(35, 6 + i); cout << string(56, ' ');
+							coorxy(34, 6 + i); cout << string(57, ' ');
 						}
+						lcntr = 0;
 						goto productList;
 						break;
 					}
@@ -1537,12 +1539,12 @@ w:
 
 		Arrow2:
 			for (int i = 0; i <= tempnum; i++) { // Erase arrow key
-				coorxy(34, 5 + i); cout << ' ';
+				coorxy(33, 5 + i); cout << ' ';
 			}
 
 			for (int i = 0; i < tempnum; i++) { // Display arrow key
 				if (lcntr == i) {
-					coorxy(34, 5 + i); cout << "*";
+					coorxy(33, 5 + i); cout << "*";
 				}
 			}
 
@@ -1876,6 +1878,8 @@ w:
 
 					// Load to link list
 					y = 0;
+
+					// for display bug
 					ifstream loadd(account, ios::app);
 					if (loadd.is_open()) {
 						line = "";
@@ -1921,6 +1925,10 @@ w:
 							while (temp2->next) temp2 = temp2->next;
 							temp2->next = temp;
 						}
+					}
+					if (addc >= tempVector.size()) {
+						addc -= 10;
+						if (addc < 0) addc = 0;
 					}
 
 					goto DisplaySort;
@@ -2270,7 +2278,8 @@ w:
 						stringstream tt(line2);
 						for (int k = 0; k < 2; k++) getline(tt, value2, '\t');
 
-						if (value1[0] > value2[0]) {
+						if (customSort(value2,value1)){
+						/*if (value1[0] > value2[0]) {*/
 							swap(tempVector[j], tempVector[j + 1]);
 						}
 					}
@@ -2499,7 +2508,7 @@ w:
 						}
 
 					}
-
+					lcntr = 0;
 					goto admindisplaySorted;
 					break;
 				}
@@ -3220,7 +3229,15 @@ w:
 						tempVectorLine.push_back(to_string(display->id) + '\t' + display->name + '\t' + value1 + '\t' + to_string(stoi(value1) * display->price));
 					}
 				}
-
+				// sort the id
+				for (size_t i = 0; i < tempVectorLine.size(); i++) {
+					for (size_t j = 0; j < tempVectorLine.size() - 1; j++) {
+						if (stoi(tempVectorLine[j]) > stoi(tempVectorLine[j + 1])) {
+							swap(tempVectorLine[j], tempVectorLine[j + 1]);
+						}
+					}
+				}
+				 
 				// update the account database
 				ofstream save(tempVector2[lcntr + add] + ".txt", ios::out);
 				if (save.is_open()) {
