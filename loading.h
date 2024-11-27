@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Headers.h"
 #include <Windows.h>
+#include "Graphics.h"
 
 #define g coorxy
 
@@ -554,4 +555,37 @@ void ldscreen() {
 
 	delay(3000);
 	system("cls");
+}
+
+void drawMonitorOpeningAnimation() {
+	initgraph();
+
+	int centerX = getmaxx() / 2; // Center of the screen horizontally
+	int centerY = getmaxy() / 2; // Center of the screen vertically
+	int width = 300; // Monitor width
+	int height = 200; // Monitor height
+
+	int screenFillHeight = 0; // Start with no screen area filled
+	int fillStep = 5; // How many pixels to fill per frame
+
+	// Draw monitor frame
+	setcolorRGB(255, 255, 255); // White color
+	rectangle(centerX - width / 2, centerY - height / 2, centerX + width / 2, centerY + height / 2);
+
+	// Simulate the screen turning on by gradually filling it
+	while (screenFillHeight <= height - 40) { // -40 to leave room for monitor edges
+		setcolorRGB(0, 255, 0); // Greenish fill for the screen
+		rectangle(centerX - width / 2 + 20, centerY - screenFillHeight / 2,
+			centerX + width / 2 - 20, centerY + screenFillHeight / 2);
+
+		screenFillHeight += fillStep;
+		Sleep(50); // Delay for smoother animation
+	}
+
+	// Draw final filled screen
+	setcolorRGB(0, 255, 0);
+	rectangle(centerX - width / 2 + 20, centerY - height / 2 + 20, centerX + width / 2 - 20, centerY + height / 2 - 20);
+
+	Sleep(2000); // Pause to display final screen
+	clrscr();    // Clear screen before exiting
 }

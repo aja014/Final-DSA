@@ -11,6 +11,7 @@
 #include <Windows.h>
 #include "border.h"
 #include "color.h"
+#include "Graphics.h"
 
 
 using namespace std;
@@ -19,7 +20,8 @@ using namespace std;
 int main()
 {
 	hideCursor(1);
-	ldscreen1();
+	opening();
+	outtextxy(260, 230, "                       ");
 	ldscreen();
 
 
@@ -3675,27 +3677,3 @@ w:
 
 	//coorxy(0, 29); system("pause");
 }
-
-
-
-//#include <iostream>
-//#include "getchValue.h"
-//#include <string>
-//#include "Headers.h"
-//
-//using namespace std;
-//
-//int main() {
-//	vector<string> arr = {"aAron", "Aaron", "AARON", "Binay", "BINAY", "bInay"};
-//	vector<string> arr2 = { "1", "01", "101", "111", "010", "001" };
-//	vector<string> arr3 = { "Aa", "Ab", "Ac", "Ad", "AE", "Af" };
-//
-//	
-//
-//	coorxy(15, 10); cout << "Input:";
-//	coorxy(10, 11); cout << "suggestion: ";
-//	suggetch(22, 10, arr3, 0, 5);
-//	
-//
-//	coorxy(0, 29); system("pause>0");
-//}

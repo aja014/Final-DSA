@@ -130,6 +130,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Header files\Graphics.h" />
     <ClInclude Include="getchValue.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="loading.h" />

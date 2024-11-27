@@ -1,15 +1,1 @@
-﻿  Main.cpp
-C:\Users\Asus\Desktop\Final DSA\Headers.h(37,11): warning C4805: '==': unsafe mix of type 'boolean' and type 'bool' in operation
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1120,56): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1568,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1571,14): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1575,14): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1584,14): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1588,14): warning C4553: '==': result of expression not used; did you intend '='?
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1733,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(3125,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(1005,4): warning C4102: 'dito': unreferenced label
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(2127,3): warning C4102: 'a1': unreferenced label
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(73,9): warning C4101: 'LastTabPos2': unreferenced local variable
-C:\Users\Asus\Desktop\Final DSA\Main.cpp(72,9): warning C4101: 'LastTabPos': unreferenced local variable
-  Final DSA.vcxproj -> C:\Users\Asus\Desktop\Final DSA\x64\Debug\Final DSA.exe
+﻿  Final DSA.vcxproj -> C:\Users\Asus\Desktop\Final DSA\x64\Debug\Final DSA.exe

@@ -4,18 +4,20 @@
 #include <sstream>
 #include <string>
 #include "color.h"
+#include "Graphics.h"
+#include "Headers.h"
 #define c color
 
 
 using namespace std;
 
-void coorxy(int x, int y) {
-	HANDLE buffer = GetStdHandle(STD_OUTPUT_HANDLE);
-	_COORD pos;
-	pos.X = x;
-	pos.Y = y;
-	SetConsoleCursorPosition(buffer, pos);
-}
+//void coorxy(int x, int y) {
+//	HANDLE buffer = GetStdHandle(STD_OUTPUT_HANDLE);
+//	_COORD pos;
+//	pos.X = x;
+//	pos.Y = y;
+//	SetConsoleCursorPosition(buffer, pos);
+//}
 
 void font1(int x, int y, int z) {
 	static CONSOLE_FONT_INFOEX font;
@@ -628,4 +630,80 @@ pili:
 		break;
 	}
 
+}
+
+void opening() {
+	initgraph();
+	int y = 0, i = 0;
+	int radius = 2;
+
+	hideCursor(1);
+	while (true) {
+		/*circle(250 + y, 450, 30);
+		y += 10;
+		if (y >= 900) y = 0;
+		Sleep(50);
+		clrscr();*/
+
+		if (i <= 360) {
+			++i;
+			//circle(360, 200, 80);
+			pieslice(360, 200, 0, i, 80);
+			outtextxy(260, 230, "Loading... Please Wait!");
+
+			if (i == 100 || i == 240) delay(1000);
+			else if (i == 280) delay(3000);
+			else if (i > 280) Sleep(10);
+			else delay(20);
+		}
+		else {
+			int num_segments = 360;
+			for (int i = 0; i < num_segments; i++) {
+				double angle1 = 2 * M_PI * i / num_segments;
+				double angle2 = 2 * M_PI * (i + 1) / num_segments;
+				int x1 = 360 + (80 + radius) * cos(angle1);
+				int y1 = 200 + (80 + radius) * sin(angle1);
+				int x2 = 360 + (80 + radius) * cos(angle2);
+				int y2 = 200 + (80 + radius) * sin(angle2);
+				// Draw the line
+				line(x1, y1, x2, y2);
+			}
+			radius += 5;
+
+		}
+
+		if (radius >= 650) break;
+		// Todo expanding circle
+
+		// Monitor
+		rectangle(100, 50, 600, 55);  // Top edge
+		rectangle(100, 350, 600, 355); // Bottom edge
+		rectangle(100, 50, 105, 350);  // Left edge
+		rectangle(600, 50, 605, 355);  // Right edge
+
+		// Monitor stand
+		rectangle(280, 350, 420, 355);  // Top edge of stand
+		rectangle(280, 400, 420, 405);  // Bottom edge of stand
+		rectangle(280, 350, 285, 400);  // Left edge of stand
+		rectangle(420, 350, 425, 400);  // Right edge of stand
+		rectangle(150, 400, 550, 410);  // Bottom stand 
+
+		// CPU 
+		rectangle(650, 50, 850, 55);   // Top edge of CPU
+		rectangle(650, 450, 850, 455); // Bottom edge of CPU
+		rectangle(650, 50, 655, 450);  // Left edge of CPU
+		rectangle(850, 50, 855, 450);  // Right edge of CPU
+
+		// CPU details
+		rectangle(680, 135, 820, 140); // CD/DVD slot
+		rectangle(680, 100, 820, 120); // CD/DVD slot RECTANGLE
+		rectangle(720, 300, 790, 305); // Button outline (top)
+		rectangle(720, 355, 790, 350); // Button outline (bottom)
+		rectangle(720, 300, 725, 350); // Button outline (left)
+		rectangle(790, 300, 795, 355); // Button outline (right)
+
+
+		// Loading Screen
+		/*rectangle(250,270,450,290);*/
+	}
 }

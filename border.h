@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include "Headers.h"
 #include "color.h"
+#include "Graphics.h"
 
 using namespace std;
 
