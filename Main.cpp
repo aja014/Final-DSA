@@ -3423,6 +3423,17 @@ w:
 			}
 
 			display = products;
+			if (display == NULL) {
+				color(3);
+				coorxy(43, 10); cout << "No product is Available :(";
+				tempVector = {};
+				products = NULL;
+				line = "";
+				type = "";
+				coorxy(41, 15); system("pause");
+				color(1);
+				goto A1;
+			}
 			coorxy(10, 5); cout << "Item ID:"; // ID
 			coorxy(20, 5); cout << "Item Name:"; // Name
 			coorxy(35, 5); cout << "Items Acquired"; // Total items 
