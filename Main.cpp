@@ -1485,7 +1485,8 @@ w:
 					stringstream sss(value2);
 					for (int i = 0; i < 2; i++) getline(sss, value2, '\t');
 
-					if (value1[0] > value2[0]) {
+					if (customSort(value2,value1)){
+					/*if (value1[0] > value2[0]) {*/
 						swap(tempVector[j], tempVector[j + 1]);
 					}
 				}
@@ -3122,7 +3123,8 @@ w:
 				// sort name alphabetical
 				for (int i = 0; i < tempVector.size(); i++) {
 					for (int j = 0; j < tempVector.size() - 1; j++) {
-						if (tempVector[j][0] > tempVector[j + 1][0]) {
+						if (customSort(tempVector[j+1],tempVector[j])) {
+						/*if (tempVector[j][0] > tempVector[j + 1][0]) {*/
 							swap(tempVector[j], tempVector[j + 1]);
 							swap(tempVector2[j], tempVector2[j + 1]);
 						}
