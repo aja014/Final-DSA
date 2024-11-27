@@ -1,0 +1,5 @@
+2	AMD athlon	3	2397
+5	Intel corei7	4	3996
+9	ASROCK gc	1	999
+12	GSKILL memory	5	1975
+19	HP monitor	5	4995
