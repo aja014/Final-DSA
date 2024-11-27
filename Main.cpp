@@ -18,6 +18,10 @@ using namespace std;
 
 int main()
 {
+	hideCursor(1);
+	ldscreen1();
+	ldscreen();
+
 
 
 

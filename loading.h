@@ -8,7 +8,7 @@
 using namespace std;
 
 
-void ldscreen() {
+void ldscreen1() {
 	int i;
 
 
@@ -414,8 +414,144 @@ void ldscreen() {
 		cout << char(219);
 	}
 
-	delay(3000);
+	//delay(3000);
 	system("cls");
 	g(0, 29);
 	//system("pause");
+}
+
+void ldscreen() {
+	int i, x = 35, y = 18, a = 0, b = 0;
+
+	color(3);
+	// Hi - Tech
+
+	logo(37, 2);
+
+	//
+	for (i = 0; i <= 4; i++) {
+		g(4 + i + a + x, 5 + b + y);
+		cout << char(223);
+	}
+	g(4 + a + x, 3 + b + y);
+	cout << char(219);
+	g(4 + a + x, 7 + b + y);
+	cout << char(223);
+	g(8 + a + x, 3 + b + y);
+	cout << char(219);
+	g(8 + a + x, 7 + b + y);
+	cout << char(223);
+	for (i = 0; i <= 2; i++) {
+		g(4 + a + x, 4 + i + b + y);
+		cout << char(219);
+		g(8 + a + x, 4 + i + b + y);
+		cout << char(219);
+	}
+
+	//i
+	for (i = 0; i <= 2; i++) {
+		g(11 + x, 3 + y);
+		cout << char(223);
+		g(11 + x, 5 + i + y);
+		cout << char(219);
+		g(11 + x, 7 + y);
+		cout << char(223);
+	}
+
+	//-
+	for (i = 0; i <= 4; i++) {
+		g(15 + i + x, 4 + y);
+		cout << char(220);
+		g(15 + i + x, 5 + y);
+		cout << char(223);
+	}
+
+	//T
+	for (i = 0; i <= 6; i++) {
+		g(21 + i + x, 3 + y);
+		cout << char(223);
+	}
+	g(24 + a + x, 3 + b + y);
+	cout << char(219);
+	g(24 + a + x, 7 + b + y);
+	cout << char(223);
+	for (i = 0; i <= 2; i++) {
+		g(24 + a + x, 4 + i + b + y);
+		cout << char(219);
+	}
+
+	//e
+	for (i = 0; i <= 1; i++) {
+		g(28 + i + a + x, 4 + b + y);
+		cout << char(220);
+		g(28 + i + a + x, 6 + b + y);
+		cout << char(223);
+		g(28 + i + a + x, 7 + b + y);
+		cout << char(223);
+	}
+	for (i = 0; i <= 1; i++) {
+		g(27 + a + x, 5 + i + b + y);
+		cout << char(219);
+		g(30 + a + x, 5 + b + y);
+		cout << char(219);
+	}
+
+	//c
+	for (i = 0; i <= 2; i++) {
+		g(34 + i + a + x, 4 + b + y);
+		cout << char(220);
+		g(34 + i + a + x, 7 + b + y);
+		cout << char(223);
+	}
+	for (i = 0; i <= 1; i++) {
+		g(33 + a + x, 5 + i + b + y);
+		cout << char(219);
+		/*g(15 + a + x, 5 + i + b + y);
+		cout << char(219);*/
+	}
+
+	//h
+	for (i = 0; i <= 2; i++) {
+		g(40 + i + x, 4 + y);
+		cout << char(220);
+	}
+	for (i = 0; i <= 1; i++) {
+		g(43 + x, 5 + i + y);
+		cout << char(219);
+	}
+	for (i = 0; i <= 3; i++) {
+		g(39 + a + x, 3 + i + b + y);
+		cout << char(219);
+	}
+	g(39 + x, 7 + y);
+	cout << char(223);
+	g(43 + x, 7 + y);
+	cout << char(223);
+
+	for (i = 0; i <= 59; i++) {
+		g(59 - i, 0);
+		cout << char(219);
+		g(60 + i, 29);
+		cout << char(219);
+		delay(10);
+	}
+	for (i = 0; i <= 29; i++) {
+		g(0, 0 + i);
+		cout << char(219);
+		g(119, 29 - i);
+		cout << char(219);
+		delay(10);
+	}
+	for (i = 0; i <= 59; i++) {
+		g(0 + i, 29);
+		cout << char(219);
+		g(119 - i, 0);
+		cout << char(219);
+		delay(10);
+	}
+
+
+
+	delay(3000);
+	system("cls");
 }
