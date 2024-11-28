@@ -1,1 +1,24 @@
-﻿  Final DSA.vcxproj -> C:\Users\Asus\Desktop\Final DSA\x64\Debug\Final DSA.exe
+﻿  Main.cpp
+C:\Users\Asus\Desktop\Final DSA\Graphics.h(53,59): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\Asus\Desktop\Final DSA\Graphics.h(54,59): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\Asus\Desktop\Final DSA\Graphics.h(231,11): warning C4244: '*=': conversion from 'double' to 'SHORT', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Graphics.h(232,11): warning C4244: '*=': conversion from 'double' to 'SHORT', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Headers.h(39,11): warning C4805: '==': unsafe mix of type 'boolean' and type 'bool' in operation
+C:\Users\Asus\Desktop\Final DSA\Headers.h(664,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Headers.h(665,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Headers.h(666,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Headers.h(667,12): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1141,56): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1610,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1613,14): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1618,14): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1628,14): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1633,14): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1780,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(3209,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(1016,4): warning C4102: 'dito': unreferenced label
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(2181,3): warning C4102: 'a1': unreferenced label
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(75,9): warning C4101: 'LastTabPos2': unreferenced local variable
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(97,7): warning C4101: 'checkpage': unreferenced local variable
+C:\Users\Asus\Desktop\Final DSA\Main.cpp(74,9): warning C4101: 'LastTabPos': unreferenced local variable
+  Final DSA.vcxproj -> C:\Users\Asus\Desktop\Final DSA\x64\Debug\Final DSA.exe

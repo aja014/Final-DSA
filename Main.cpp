@@ -19,10 +19,10 @@ using namespace std;
 
 int main()
 {
-	hideCursor(1);
+	/*hideCursor(1);
 	opening();
 	outtextxy(260, 230, "                       ");
-	ldscreen();
+	ldscreen();*/
 
 
 
@@ -84,6 +84,7 @@ Q:
 	int access = 1; // 0 = user / 1 = admin
 	int prodCounterID = 0;
 	int total = 0;
+	int pg1 = 0; // page
 
 	int addc = 0;
 	int maxdis = 0;
@@ -93,6 +94,7 @@ Q:
 	char arr[100]; // temporary char for getch
 
 	bool check;
+	bool checkpage;
 	bool accCheck;
 
 	system("color 01");
@@ -898,6 +900,11 @@ w:
 
 				if (!check) goto noResult;
 
+				// Page
+				pg1 = 0;
+				if (tempVector.size() >= 0) {
+					pg1 = 1;
+				}
 
 				// sorting
 			displaySorted:
@@ -982,6 +989,8 @@ w:
 
 				}
 
+			
+
 			productList:
 
 				// display account cart
@@ -1045,8 +1054,14 @@ w:
 					if (i == maxdis)break;
 				}
 
-				// youre at choosing the product - done
+				
 			W1:
+				// the page
+				if (pg1 > 0) {
+					coorxy(60, 27); cout << "  ";
+					coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+				}
+
 				// Display - done
 				for (int i = 1; i <= 10; i++) {
 					coorxy(33, 5 + i); cout << ' ';
@@ -1085,6 +1100,7 @@ w:
 							/*if (maxdis > tempVector.size()) {*/
 							maxdis = 9;
 							add = 0;
+							pg1 = 1;
 						}
 						else {
 							for (int i = 0; i < 10; i++) {
@@ -1094,6 +1110,7 @@ w:
 								}
 							}
 							add+=10;
+							pg1++;
 						}
 						/*maxdis += 10;
 						add += 10;
@@ -1113,10 +1130,12 @@ w:
 							} */
 							maxdis = 9;
 							add = 0;
+							pg1 = 1;
 						}
 						else if (add >= tempVector.size() && maxdis >= tempVector.size()) {
 							maxdis = 9;
 							add = 0;
+							pg1 = 1;
 						}
 						
 						if (add > tempVector.size())add = tempVector.size();
@@ -1134,18 +1153,24 @@ w:
 						if (maxdis == 9 && add == 0 || maxdis <= 10) {
 							maxdis = 9;
 							add = 0;
+							pg1 = 1;
 						}
 						else {
 							maxdis -= 10;
 							add -= 10;
 							lcntr = 0;
 
-							if (maxdis < 10) maxdis = 9;
+							if (maxdis < 10) {
+								maxdis = 9;
+								pg1 = 1;
+							}
 							else if (maxdis % 10 != 0) {
 								if (add + 10 <= tempVector.size()) {
 									maxdis = add + 9;
+									pg1--;
 								}
 							}
+							else pg1--;
 							
 						}
 						for (int i = 0; i <= y; i++) {
@@ -1176,6 +1201,7 @@ w:
 					coorxy(85, 4); cout << string(26, ' '); // Erase 'Not enough stock available'
 					break;
 				case 9: // 'tab' go to searchAgain
+					coorxy(74, 20); cout << "       ";
 					// Erase display
 
 					// RUNTIME HERE
@@ -1184,8 +1210,11 @@ w:
 					for (int i = 0; i <= 11; i++) {
 						coorxy(33, 4 + i); cout << string(56, ' ');
 					}
+					coorxy(55, 27); cout << "       "; // erase page
+
 					coorxy(90, 5); cout << string(25, ' '); // erase how many
 					coorxy(85, 4); cout << string(26, ' '); // erase not enough stock
+
 					goto searchAgain;
 					break;
 				case 0x10: // ctrl + p = price
@@ -1262,6 +1291,7 @@ w:
 					for (int i = 0; i <= 11; i++) {
 						coorxy(33, 4 + i); cout << string(56, ' ');
 					}
+					coorxy(55, 27); cout << "       "; // ERASE PAGE
 					coorxy(90, 5); cout << string(25, ' '); // erase how many
 					coorxy(85, 4); cout << string(26, ' '); // erase not enough stock
 
@@ -1385,6 +1415,7 @@ w:
 				}
 
 				coorxy(90, 5); cout << string(25, ' '); // erase 'Enter how many'
+				coorxy(55, 27); cout << "       "; // Erase page
 
 				goto productList;
 			}
@@ -1393,6 +1424,7 @@ w:
 					coorxy(85, 4); cout << string(20, ' ');
 					coorxy(85, 4); cout << "Not enough stock available";
 				}
+				coorxy(55, 27); cout << "       "; // Erase page
 				goto productList;
 			}
 
@@ -1477,6 +1509,10 @@ w:
 				display = display->next;
 			}
 
+			pg1 = 0;
+			if (tempVector.size() >= 0) {
+				pg1 = 1;
+			}
 			// sort by name
 		sortName:
 
@@ -1544,6 +1580,10 @@ w:
 			tempnum2 = tempnum;
 
 		Arrow2:
+			if (pg1 > 0) {
+				coorxy(79, 20); cout << "  ";
+				coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+			}
 			for (int i = 0; i <= tempnum; i++) { // Erase arrow key
 				coorxy(33, 5 + i); cout << ' ';
 			}
@@ -1571,10 +1611,12 @@ w:
 						if ((tempo - (addc + 10)) <= 0) {
 							addc = 0;
 							lcntr == 0;
+							pg1 = 1;
 						}
 						else {
 							addc += 10;
 							lcntr == 0;
+							pg1++;
 						}
 						//maxdis += 10;
 						goto DisplaySort;
@@ -1584,10 +1626,12 @@ w:
 							//maxdis = 10;
 							addc = 0;
 							lcntr == 0;
+							pg1 = 1;
 						}
 						else {
 							addc -= 10;
 							lcntr == 0;
+							pg1--;
 							//maxdis -= 10;
 							goto DisplaySort;
 						}
@@ -1649,6 +1693,7 @@ w:
 					goto sortName;
 				}
 				else if (a == 15) { // ctrl + o = output/receipt
+					coorxy(74, 20); cout << "        ";
 					//RECEIPT
 					for (int i = 0; i <= 11; i++) {
 						coorxy(34, 4 + i); cout << string(51, ' ');
@@ -1735,18 +1780,22 @@ w:
 						tempo = tempVector.size();
 						if ((tempo - (addc + 10)) <= 0) {
 							addc = 0;
+							pg1 = 0;
 						}
 						else {
 							addc += 10;
+							pg1++;
 						}
 						goto disrec;
 						break;
 					case 75://left
 						if (addc == 0) {
 							addc = 0;
+							pg1 = 0;
 						}
 						else {
 							addc -= 10;
+							pg1++;
 						}
 						goto disrec;
 						break;
@@ -1932,9 +1981,12 @@ w:
 							temp2->next = temp;
 						}
 					}
-					if (addc >= tempVector.size()) {
+ 					if (addc >= tempVector.size()) {
 						addc -= 10;
-						if (addc < 0) addc = 0;
+						pg1--;
+							if (addc < 0){ addc = 0;
+							pg1 = 1;
+						}
 					}
 
 					goto DisplaySort;
@@ -2226,7 +2278,10 @@ w:
 					check = true;
 				}
 			}
-
+			pg1 = 0;
+			if (tempVector.size() > 0) {
+				pg1 = 1;
+			}
 
 			if (!check) {
 				//goto noResult1;
@@ -2240,6 +2295,7 @@ w:
 
 			// sorting
 		admindisplaySorted:
+
 
 			// erase display products
 			for (int i = 0; i <= 11; i++) {
@@ -2392,6 +2448,11 @@ w:
 
 			// youre at choosing the product - done
 		aa1:
+			if (pg1 > 0) {
+				coorxy(60, 27); cout << "  ";
+				coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+			}
+
 			// Display - done
 			for (int i = 0; i < y + 1; i++) {
 				coorxy(100, 5 + i); cout << ' ';
@@ -2442,6 +2503,7 @@ w:
 					if (maxdis >= tempVector.size() || tempVector.size() <= 10) { // pag max or first page
 						maxdis = 9;
 						tempo = 0;
+						pg1 = 1;
 					}
 					else {
 						for (int i = 0; i < 10; i++) {
@@ -2451,6 +2513,7 @@ w:
 							}
 						}
 						tempo += 10;
+						pg1++;
 					}
 
 					if (maxdis > tempVector.size() || tempVector.size() <= 10) { // if max page
@@ -2458,10 +2521,12 @@ w:
 						} */
 						maxdis = 9;
 						tempo = 0;
+						pg1 = 1;
 					}
 					else if (tempo >= tempVector.size() && maxdis >= tempVector.size()) {
 						maxdis = 9;
 						tempo = 0;
+						pg1 = 1;
 					}
 
 					/*if (maxdis == 9 && tempo == 0 || maxdis <= 10) {
@@ -2500,18 +2565,24 @@ w:
 					if (maxdis == 9 && tempo == 0 || maxdis <= 10) {
 						maxdis = 9;
 						tempo = 0;
+						pg1 = 1;
 					}
 					else {
 						maxdis -= 10;
 						tempo -= 10;
 						lcntr = 0;
 
-						if (maxdis < 10) maxdis = 9;
+						if (maxdis < 10) {
+							maxdis = 9;
+							pg1 = 1;
+						}
 						else if (maxdis % 10 != 0) {
 							if (tempo + 10 <= tempVector.size()) {
 								maxdis = tempo + 9;
+								pg1--;
 							}
 						}
+						else pg1--;
 
 					}
 					lcntr = 0;
@@ -2545,6 +2616,7 @@ w:
 
 				break;
 			case '\t': // 'tab' go to searchAgain
+				coorxy(55, 27); cout << "       "; // erase page
 				// Erase display
 				for (int i = 0; i <= 11; i++) {
 					coorxy(40, 4 + i); cout << string(61, ' ');//3 //5
@@ -2892,6 +2964,10 @@ w:
 				}
 				load.close();
 			}
+			pg1 = 0;
+			if (tempVector.size() > 0) {
+				pg1 = 1;
+			}
 
 			// sort name alphabetical
 			for (int i = 0; i < tempVector.size(); i++) {
@@ -2931,7 +3007,10 @@ w:
 			//	hehe++;
 			//	//if (i > maxdis)break;
 			//}
-
+			if (pg1 > 0) {
+				coorxy(60, 27); cout << "  ";
+				coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+			}
 			// Display
 			color(6);
 			coorxy(25, 3); cout << "Username";
@@ -3027,6 +3106,7 @@ w:
 						if (maxdis >= tempVector.size()) {
 							add = 0;
 							maxdis = 10;
+							pg1 = 1;
 						}
 						else {
 							for (int i = 1; i <= 10; i++) {
@@ -3038,6 +3118,7 @@ w:
 							tempy = maxdis;
 							add += 10;
 							lcntr = 0;
+							pg1++;
 						}
 
 						// display
@@ -3074,6 +3155,7 @@ w:
 							}
 							add -= 10;
 							lcntr = 0;
+							pg1--;
 							//}
 
 							// display
@@ -3235,6 +3317,10 @@ w:
 						tempVectorLine.push_back(to_string(display->id) + '\t' + display->name + '\t' + value1 + '\t' + to_string(stoi(value1) * display->price));
 					}
 				}
+				pg1 = 0;
+				if (tempVectorLine.size() > 0) {
+					pg1 = 1;
+				}
 				// sort the id
 				for (size_t i = 0; i < tempVectorLine.size(); i++) {
 					for (size_t j = 0; j < tempVectorLine.size() - 1; j++) {
@@ -3258,6 +3344,10 @@ w:
 				system("cls");
 				maxdis = 0;
 			disp:
+				if (pg1 > 0) {
+					coorxy(60, 27); cout << "  ";
+					coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+				}
 				man_acc2_b();
 				coorxy(50, 3); cout << accUser[lcntr + add] + " " << accPs[lcntr + add] << "'s cart";
 				ifstream load(tempVector2[lcntr + add] + ".txt", ios::in);
@@ -3328,6 +3418,7 @@ w:
 				// if empty
 				if (!check) {
 					coorxy(50, 10 + tempnum); cout << "Cart is empty";
+					coorxy(55, 27); cout << "       ";
 				}
 				else {
 					coorxy(5, 24); cout << "Total items : " << pieces;
@@ -3343,9 +3434,11 @@ w:
 				case 77:// ayusin yung display tas goods na
 					if (y < maxdis + 15) {
 						maxdis = 0;
+						pg1 = 1;
 					}
 					else {
 						maxdis += 15;
+						pg1++;
 					}
 					for (int i = 0; i <= 15; i++) {
 						coorxy(10, 5 + i); cout << string(90, ' ');
@@ -3353,9 +3446,13 @@ w:
 					goto disp;
 					break;
 				case 75:
-					if (maxdis == 0)maxdis = 0;
+					if (maxdis == 0) {
+						maxdis = 0;
+						pg1 = 1;
+					}
 					else {
 						maxdis -= 15;
+						pg1--;
 					}
 					for (int i = 0; i <= 15; i++) {
 						coorxy(10, 5 + i); cout << string(90, ' ');
@@ -3423,7 +3520,10 @@ w:
 				}
 				load.close();
 			}
-
+			pg1 = 0;
+			if (tempVector.size() > 0) {
+				pg1 = 1;
+			}
 			display = products;
 			if (display == NULL) {
 				color(3);
@@ -3457,6 +3557,10 @@ w:
 			// Erase Display
 			y = 0;
 		r1:
+			if (pg1 > 0) {
+				coorxy(60, 27); cout << "  ";
+				coorxy(55, 27); color(3); cout << "Page "; color(6); cout << pg1; color(1);
+			}
 			for (int i = 0; i <= y; i++) {
 				coorxy(10, 6 + i); cout << string(100, ' ');
 			}
@@ -3638,21 +3742,32 @@ w:
 				if (pg > tempVector.size()) {
 					pg = 9;
 					add = 0;
+					pg1=1;
 				}
 				else {
 					pg += 10;
 					add += 10;
+					pg1++;
 				}
+
+				if (add >= tempVector.size() && pg > tempVector.size()) {
+					pg = 9;
+					add = 0;
+					pg1 = 1;
+				}
+
 				goto r1;
 			}
 			else if (a == 75) { //LEFT ARROW
 				if (pg == 9 && add == 0) {
 					pg = 9;
 					add = 0;
+					pg1 = 1;
 				}
 				else {
 					pg -= 10;
 					add -= 10;
+					pg1--;
 				}
 				goto r1;
 			}
